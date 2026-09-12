@@ -28,3 +28,12 @@
   - The OS navigation bar is transparent by default in Android 15+.
   - In `unstable-native-tabs`, the native Material 3 `BottomNavigationView` extends its background down into the navigation bar area.
   - Safe area insets should be provided via `<SafeAreaProvider>`; avoid wrapping root navigators with `<SafeAreaView edges={['bottom']}>` when using bottom tabs to avoid dead-space gaps.
+
+### 4. UI/UX Research & Future Roadmap
+- **Telegram Floating Tabs Analysis (`telegram native tabs.jpg`)**:
+  - Investigated Telegram's Android navigation tabs implementation.
+  - Telegram does not use stock Material `BottomNavigationView`; it uses a 100% custom native Android floating view drawn on Canvas with background blur shaders (`RenderEffect`).
+  - Characteristics: Floating capsule/dock geometry with margins (`bottom: insets.bottom + 12`), frosted glass/blur, active tab enclosed in a rounded pill highlight, outline inactive icons.
+  - Advantage: Floating capsule design naturally solves edge-to-edge system navigation bar collisions because it never touches the bottom glass edge.
+  - Roadmap: Study Telegram's Android repository (`DrKLO/Telegram`) to replicate this floating liquid glass dock in future milestones using `expo-glass-effect` or custom tabs.
+- **Branch Hygiene**: All merged feature branches (`fix/issue-1-tabs-and-screens`, `fix/issue-3-dynamic-color-android`) deleted locally and remotely. Working tree clean on `main`.
