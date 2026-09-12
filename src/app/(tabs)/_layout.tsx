@@ -5,10 +5,14 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const activeColor = isDark ? "#ffffff" : "#000000";
+  const backgroundColor = isDark ? "#121212" : "#ffffff";
+  const indicatorColor = isDark ? "#27272a" : "#e4e4e7";
 
   return (
     <NativeTabs
       labelVisibilityMode="labeled"
+      backgroundColor={backgroundColor}
+      indicatorColor={indicatorColor}
       labelStyle={{
         color: activeColor,
       }}
