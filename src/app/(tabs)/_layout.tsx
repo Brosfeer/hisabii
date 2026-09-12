@@ -1,20 +1,22 @@
 import { NativeTabs } from "expo-router/unstable-native-tabs";
-import { DynamicColorIOS } from "react-native";
+import { useColorScheme } from "react-native";
 
 export default function TabLayout() {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
+  const activeColor = isDark ? "#ffffff" : "#000000";
+  const backgroundColor = isDark ? "#121212" : "#ffffff";
+  const indicatorColor = isDark ? "#27272a" : "#e4e4e7";
+
   return (
     <NativeTabs
       labelVisibilityMode="labeled"
+      backgroundColor={backgroundColor}
+      indicatorColor={indicatorColor}
       labelStyle={{
-        color: DynamicColorIOS({
-          dark: "white",
-          light: "black",
-        }),
+        color: activeColor,
       }}
-      tintColor={DynamicColorIOS({
-        dark: "white",
-        light: "black",
-      })}
+      tintColor={activeColor}
     >
       <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>

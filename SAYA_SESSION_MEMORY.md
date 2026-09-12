@@ -18,3 +18,4 @@
 - Local environment uses OpenJDK 17 (`/home/brosfeer/development/jdk-17`) and Android SDK platform tools.
 - Target device: `SM_A5070` (`R58MA3HMQ4W`).
 - Cached Gradle: 9.3.1 binary distribution.
+- **Cross-Platform Tab Styling**: Avoid `DynamicColorIOS` as it throws runtime platform exceptions on Android. Use `useColorScheme()` from `react-native` for dynamic dark/light color resolution.
