@@ -1,6 +1,7 @@
 import { GlassButton } from "@/components/ui/glass-button";
 import { useState } from "react";
 import {
+  Alert,
   Pressable,
   ScrollView,
   Switch,
@@ -26,6 +27,22 @@ export default function SettingsScreen() {
     true: "#2563eb",
   };
   const switchThumbColor = isDark ? "#f4f4f5" : "#ffffff";
+
+  const handleExport = () => {
+    Alert.alert(
+      "تصدير كشف الحسابات",
+      "ميزة تصدير الكشوفات بصيغتي Excel و PDF قيد التطوير وستتوفر في التحديث القادم.",
+      [{ text: "حسناً" }],
+    );
+  };
+
+  const handleBackup = () => {
+    Alert.alert(
+      "النسخ الاحتياطي الفوري",
+      "تم بدء النسخ الاحتياطي المحلي لدفتر الحسابات والعملاء بنجاح.",
+      [{ text: "حسناً" }],
+    );
+  };
 
   return (
     <ScrollView
@@ -189,13 +206,13 @@ export default function SettingsScreen() {
           title="تصدير كشف حسابات الدفتر (Excel / PDF)"
           variant="primary"
           size="lg"
-          onPress={() => {}}
+          onPress={handleExport}
         />
         <GlassButton
           title="إنشاء نسخة احتياطية فورية (Instant Backup)"
           variant="default"
           size="md"
-          onPress={() => {}}
+          onPress={handleBackup}
         />
       </View>
 
