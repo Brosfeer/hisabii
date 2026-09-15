@@ -36,7 +36,7 @@ const CustomerCard = memo(
             <View className="flex-1 pe-3">
               <View className="flex-row items-center gap-2">
                 <Text
-                  className="text-base font-bold text-zinc-900 dark:text-zinc-100"
+                  className="font-digital-bold text-base text-zinc-900 dark:text-zinc-100"
                   numberOfLines={1}
                 >
                   {customer.nameAr}
@@ -51,11 +51,11 @@ const CustomerCard = memo(
                   }`}
                 />
               </View>
-              <Text className="text-xs text-zinc-500 mt-0.5" numberOfLines={1}>
+              <Text className="font-digital text-xs text-zinc-500 mt-0.5" numberOfLines={1}>
                 {customer.nameEn} • {customer.accountNumber}
               </Text>
               <Text
-                className="text-[11px] text-zinc-400 mt-0.5"
+                className="font-digital text-[11px] text-zinc-400 mt-0.5"
                 numberOfLines={1}
               >
                 {customer.phone}
@@ -65,7 +65,7 @@ const CustomerCard = memo(
             {/* Financial Balance */}
             <View className="items-end min-w-[90px]">
               <Text
-                className={`text-base font-black ${
+                className={`font-display-bold text-base ${
                   isOverdue
                     ? "text-red-600 dark:text-red-400"
                     : owesMoney
@@ -77,7 +77,7 @@ const CustomerCard = memo(
                 {Math.abs(customer.balance).toLocaleString()}{" "}
                 {customer.currency}
               </Text>
-              <Text className="text-[10px] font-medium text-zinc-500 mt-0.5">
+              <Text className="font-text-medium text-[11px] text-zinc-500 mt-0.5">
                 {isSettled
                   ? "خالص (Settled)"
                   : owesMoney
@@ -156,24 +156,24 @@ export default function CustomerListScreen() {
     >
       {/* Header & Financial KPI Summary */}
       <View className="px-5 pt-3 pb-2">
-        <Text className="text-2xl font-black text-zinc-900 dark:text-zinc-100">
+        <Text className="font-display-bold text-2xl text-zinc-900 dark:text-zinc-100">
           العملاء / Customers
         </Text>
 
         <View className="flex-row gap-3 mt-3">
           <View className="flex-1 bg-white dark:bg-zinc-900 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <Text className="text-[11px] text-zinc-500 font-medium">
+            <Text className="font-digital-medium text-[11px] text-zinc-500">
               إجمالي الديون (Total Debt)
             </Text>
-            <Text className="text-lg font-black text-amber-600 dark:text-amber-400 mt-0.5">
+            <Text className="font-display-bold text-lg text-amber-600 dark:text-amber-400 mt-0.5">
               {metrics.totalDebt.toLocaleString()} SAR
             </Text>
           </View>
           <View className="flex-1 bg-white dark:bg-zinc-900 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <Text className="text-[11px] text-zinc-500 font-medium">
+            <Text className="font-digital-medium text-[11px] text-zinc-500">
               المتأخرين (Overdue)
             </Text>
-            <Text className="text-lg font-black text-red-600 dark:text-red-400 mt-0.5">
+            <Text className="font-display-bold text-lg text-red-600 dark:text-red-400 mt-0.5">
               {metrics.overdueCount} عملاء
             </Text>
           </View>
@@ -186,7 +186,7 @@ export default function CustomerListScreen() {
             onChangeText={setSearchQuery}
             placeholder="بحث بالاسم أو الرقم أو الحساب..."
             placeholderTextColor="#a1a1aa"
-            className="text-sm text-zinc-900 dark:text-zinc-100 p-0"
+            className="font-digital text-sm text-zinc-900 dark:text-zinc-100 p-0"
             clearButtonMode="while-editing"
             autoCorrect={false}
           />
@@ -207,10 +207,10 @@ export default function CustomerListScreen() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <View className="items-center justify-center pt-16 px-4">
-            <Text className="text-base font-bold text-zinc-400">
+            <Text className="font-digital-medium text-base text-zinc-400">
               لا توجد نتائج مطابقة لـ "{searchQuery}"
             </Text>
-            <Text className="text-xs text-zinc-500 mt-1">
+            <Text className="font-text text-xs text-zinc-500 mt-1">
               تحقق من صحة رقم العميل أو الاسم
             </Text>
           </View>
