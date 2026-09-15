@@ -20,6 +20,13 @@ export default function SettingsScreen() {
   const [autoBackupEnabled, setAutoBackupEnabled] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState("SAR");
 
+  // Dynamic theme-adaptive switch colors
+  const switchTrackColor = {
+    false: isDark ? "#3f3f46" : "#d4d4d8",
+    true: "#2563eb",
+  };
+  const switchThumbColor = isDark ? "#f4f4f5" : "#ffffff";
+
   return (
     <ScrollView
       className="flex-1 bg-zinc-50 dark:bg-black"
@@ -60,7 +67,8 @@ export default function SettingsScreen() {
                 <Pressable
                   key={curr}
                   onPress={() => setSelectedCurrency(curr)}
-                  className={`px-3 py-1.5 rounded-xl ${
+                  hitSlop={{ top: 8, bottom: 8, left: 6, right: 6 }}
+                  className={`px-3.5 py-2 rounded-xl ${
                     selectedCurrency === curr
                       ? "bg-white dark:bg-zinc-700 shadow-sm"
                       : ""
@@ -151,8 +159,8 @@ export default function SettingsScreen() {
             <Switch
               value={notificationsEnabled}
               onValueChange={setNotificationsEnabled}
-              trackColor={{ false: "#71717a", true: "#3b82f6" }}
-              thumbColor={notificationsEnabled ? "#ffffff" : "#f4f3f4"}
+              trackColor={switchTrackColor}
+              thumbColor={switchThumbColor}
             />
           </View>
 
@@ -168,8 +176,8 @@ export default function SettingsScreen() {
             <Switch
               value={autoBackupEnabled}
               onValueChange={setAutoBackupEnabled}
-              trackColor={{ false: "#71717a", true: "#3b82f6" }}
-              thumbColor={autoBackupEnabled ? "#ffffff" : "#f4f3f4"}
+              trackColor={switchTrackColor}
+              thumbColor={switchThumbColor}
             />
           </View>
         </View>
