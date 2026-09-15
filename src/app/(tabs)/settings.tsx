@@ -122,7 +122,7 @@ export default function SettingsScreen() {
               </Text>
             </View>
             <View className="flex-row items-center justify-between">
-              <Text className="font-display-medium text-xs text-zinc-600 dark:text-zinc-400">
+              <Text className="font-display text-xs text-zinc-600 dark:text-zinc-400">
                 العناوين والـ KPIs الكبرى (Display Titles)
               </Text>
               <Text className="font-display-bold text-xs text-zinc-900 dark:text-zinc-100">
