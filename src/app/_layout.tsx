@@ -11,7 +11,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <NavigationBar style={isDark ? "light" : "dark"} />
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
       <Stack
         screenOptions={{
           headerShown: false,

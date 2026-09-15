@@ -12,7 +12,7 @@ import { withUniwind } from "uniwind";
 
 const StyledBlurView = withUniwind(ExpoBlurView);
 
-export type GlassButtonVariant = "default" | "primary" | "destructive";
+export type GlassButtonVariant = "default" | "primary" | "destructive" | "ghost";
 export type GlassButtonSize = "sm" | "md" | "lg";
 export interface GlassButtonProps extends Omit<PressableProps, "children"> {
   title?: string;
@@ -69,11 +69,13 @@ export const GlassButton = forwardRef<View, GlassButtonProps>(
         "bg-blue-600/20 dark:bg-blue-500/25 border border-blue-500/40 dark:border-blue-400/30 shadow-sm",
       destructive:
         "bg-red-600/20 dark:bg-red-500/25 border border-red-500/40 dark:border-red-400/30 shadow-sm",
+      ghost: "bg-transparent border border-transparent shadow-none",
     }[variant];
     const variantTextClasses = {
       default: "text-zinc-900 dark:text-zinc-100",
       primary: "text-blue-700 dark:text-blue-300",
       destructive: "text-red-700 dark:text-red-300",
+      ghost: "text-zinc-700 dark:text-zinc-300",
     }[variant];
 
     return (
