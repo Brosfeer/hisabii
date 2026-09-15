@@ -122,3 +122,26 @@
   2. `9d0541d`: `Fix(ui): Implement Dynamic Theme StatusBar And Refine Glass Primitives (Refs #5)` — Bound `StatusBar` dynamically to `isDark ? 'light-content' : 'dark-content'`, added `forwardRef<BlurView>` and dynamic theme tint to `GlassViewProps`, added `"ghost"` variant to `GlassButton`, and corrected `metro.config.js` typo.
   3. `10d85ab`: `Fix(navigation): Enforce RTL Logical Padding And Native Stack Popping (Refs #5)` — Converted physical `pr-3` to logical `pe-3` (`padding-inline-end`) in `CustomerCard`, replaced push-based `<Link>` with `router.back()` stack popping and bidirectional arrow glyphs (`I18nManager.isRTL ? '→' : '←'`) in `src/app/customers/[id].tsx`, and added safe area top inset in `src/app/(tabs)/index.tsx`.
 
+### 13. Thmanyah Typography Architecture & Uniwind Theme Engine (PR #8 / Issue #7)
+- **Design Philosophy**: Based on the official *Thmanyah Font Aesthetics Guide* (`دليل جماليات خط ثمانية`), Thmanyah provides 3 specialized typefaces across 5 weights:
+  1. **`thmanyah Sans` (خط ثمانية الرقمي)**: Specifically engineered for digital interfaces, buttons, tabs, input fields, and compact ledger cards.
+  2. **`thmanyah Serif Text` (خط ثمانية للنصوص)**: Formatted for editorial text, long-form invoice descriptions, financial notes, and accounting logs.
+  3. **`thmanyah Serif Display` (خط ثمانية للعناوين)**: Crafted for prominent display headlines, hero banners, and high-impact KPI totals.
+- **Asset Placement**: 9 primary `.otf` binaries extracted into `assets/fonts/`:
+  - `thmanyahsans-Regular.otf`, `thmanyahsans-Medium.otf`, `thmanyahsans-Bold.otf`
+  - `thmanyahseriftext-Regular.otf`, `thmanyahseriftext-Medium.otf`, `thmanyahseriftext-Bold.otf`
+  - `thmanyahserifdisplay-Regular.otf`, `thmanyahserifdisplay-Bold.otf`, `thmanyahserifdisplay-Black.otf`
+- **Native & Ambient Configuration**:
+  - `fonts.d.ts`: Ambient TypeScript declarations for `*.otf`, `*.ttf`, `*.woff`, `*.woff2`.
+  - `app.json`: Configured `expo-font` plugin with font asset paths for native prebuild linking into Android assets and iOS `Info.plist`.
+- **Uniwind Tailwind v4 Tokens (`global.css`)**:
+  - Default: `--font-sans: 'ThmanyahSans-Regular'`
+  - Digital: `--font-digital`, `--font-digital-medium`, `--font-digital-bold`
+  - Text: `--font-text`, `--font-text-medium`, `--font-text-bold`
+  - Display: `--font-display`, `--font-display-bold`, `--font-display-black`
+- **Runtime Preloading & Splash Lock (`src/app/_layout.tsx`)**:
+  - `SplashScreen.preventAutoHideAsync()` prevents FOUT (Flash of Unstyled Text).
+  - `useFonts` dynamically registers font definitions into React Native runtime.
+  - `SplashScreen.hideAsync()` releases the native splash screen once fonts are loaded.
+
+
