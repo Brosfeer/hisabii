@@ -1,32 +1,27 @@
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Text, View } from "react-native";
 
-interface HeaderProps {
+export interface HeaderProps {
   title?: string;
   subtitle?: string;
+  className?: string;
 }
 
-export default function Header({ title = "Hisabi", subtitle }: HeaderProps) {
+export default function Header({
+  title = "Hisabi",
+  subtitle,
+  className = "",
+}: HeaderProps) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
+    <View className={`py-3 px-4 ${className}`}>
+      <Text className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
+        {title}
+      </Text>
+      {subtitle ? (
+        <Text className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+          {subtitle}
+        </Text>
+      ) : null}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "700",
-    color: "#1a1a1a",
-  },
-  subtitle: {
-    fontSize: 13,
-    color: "#666666",
-    marginTop: 2,
-  },
-});
