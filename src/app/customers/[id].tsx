@@ -1,17 +1,28 @@
 import { getCustomerById } from "@/data/customers";
-import { Link, useLocalSearchParams } from "expo-router";
-import { useMemo } from "react";
-import { Pressable, Text, View } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { useCallback, useMemo } from "react";
+import { I18nManager, Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function CustomerDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
+  const router = useRouter();
+
+  const handleBack = useCallback(() => {
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.replace("/(tabs)/customers" as any);
+    }
+  }, [router]);
 
   // Memoize customer lookup by ID
   const customer = useMemo(() => {
     return id ? getCustomerById(id) : undefined;
   }, [id]);
+
+  const backArrow = I18nManager.isRTL ? "→" : "←";
 
   if (!customer) {
     return (
@@ -22,13 +33,14 @@ export default function CustomerDetailsScreen() {
         <Text className="text-lg font-bold text-red-500">
           العميل غير موجود / Customer not found
         </Text>
-        <Link href={"/"} asChild>
-          <Pressable className="mt-4 px-5 py-2.5 bg-zinc-800 dark:bg-zinc-100 rounded-xl active:opacity-80">
-            <Text className="text-white dark:text-zinc-900 font-semibold">
-              العودة للرئيسية
-            </Text>
-          </Pressable>
-        </Link>
+        <Pressable
+          onPress={() => router.replace("/(tabs)" as any)}
+          className="mt-4 px-5 py-2.5 bg-zinc-800 dark:bg-zinc-100 rounded-xl active:opacity-80"
+        >
+          <Text className="text-white dark:text-zinc-900 font-semibold">
+            العودة للرئيسية
+          </Text>
+        </Pressable>
       </View>
     );
   }
@@ -41,14 +53,15 @@ export default function CustomerDetailsScreen() {
       className="flex-1 bg-zinc-50 dark:bg-black p-5"
       style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}
     >
-      {/* Back Button */}
-      <Link href="/customers" asChild>
-        <Pressable className="self-start px-3.5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-xl mb-4 active:opacity-75">
-          <Text className="text-xs font-bold text-zinc-800 dark:text-zinc-200">
-            ← العودة للقائمة (Back)
-          </Text>
-        </Pressable>
-      </Link>
+      {/* Back Button with Native Stack Popping and Directional RTL Adaptation */}
+      <Pressable
+        onPress={handleBack}
+        className="self-start px-3.5 py-2 bg-zinc-200 dark:bg-zinc-800 rounded-xl mb-4 active:opacity-75"
+      >
+        <Text className="text-xs font-bold text-zinc-800 dark:text-zinc-200">
+          {backArrow} العودة للقائمة (Back)
+        </Text>
+      </Pressable>
 
       {/* Customer Overview Card */}
       <View className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-sm">

@@ -33,7 +33,7 @@ const CustomerCard = memo(
         >
           <View className="flex-1 flex-row justify-between items-center">
             {/* Customer Information */}
-            <View className="flex-1 pr-3">
+            <View className="flex-1 pe-3">
               <View className="flex-row items-center gap-2">
                 <Text
                   className="text-base font-bold text-zinc-900 dark:text-zinc-100"
