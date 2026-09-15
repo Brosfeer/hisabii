@@ -56,9 +56,9 @@ export const GlassButton = forwardRef<View, GlassButtonProps>(
     }[size];
 
     const textSizeClasses = {
-      sm: "text-xs font-semibold",
-      md: "text-sm font-bold",
-      lg: "text-base font-extrabold",
+      sm: "text-xs font-digital-medium",
+      md: "text-sm font-digital-bold",
+      lg: "text-base font-digital-bold",
     }[size];
 
     //2. Visual Variant Presets  (Translucent tokens + Subtle borders)
