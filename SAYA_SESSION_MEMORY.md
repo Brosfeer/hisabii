@@ -143,5 +143,9 @@
   - `SplashScreen.preventAutoHideAsync()` prevents FOUT (Flash of Unstyled Text).
   - `useFonts` dynamically registers font definitions into React Native runtime.
   - `SplashScreen.hideAsync()` releases the native splash screen once fonts are loaded.
+- **Settings Screen Integration (`src/app/(tabs)/settings.tsx`)**:
+  - Replaced legacy StyleSheet placeholder with authentic Thmanyah typography and Uniwind tokens.
+  - `font-display-bold` header, `font-digital-bold` section titles and currency chips (`SAR`, `USD`, `AED`), `font-text` descriptions, and frosted `GlassButton` actions for report exports and backups.
+
 
 
