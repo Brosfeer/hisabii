@@ -146,6 +146,12 @@
 - **Settings Screen Integration (`src/app/(tabs)/settings.tsx`)**:
   - Replaced legacy StyleSheet placeholder with authentic Thmanyah typography and Uniwind tokens.
   - `font-display-bold` header, `font-digital-bold` section titles and currency chips (`SAR`, `USD`, `AED`), `font-text` descriptions, and frosted `GlassButton` actions for report exports and backups.
+- **PR #8 Forensic Review & Multi-Commit Resolution**:
+  1. `cc81f37`: `Fix(navigation): Protect Splash Screen Lock With Rejection Handler (Refs #7)` — Added defensive `.catch(() => {})` on `SplashScreen.preventAutoHideAsync()`.
+  2. `ed67116`: `Fix(styling): Correct Thmanyah Display Typography Token In Settings (Refs #7)` — Corrected `font-display-medium` to `font-display` to align with declared tokens.
+  3. `aafff3b`: `Fix(ui): Implement Dynamic Dark Mode Switch Palette And Accessible Touch Targets (Refs #7)` — Replaced hardcoded switch hex colors with dynamic `switchTrackColor`/`switchThumbColor`, and added `hitSlop` to currency chips.
+  4. `f7ba148`: `Fix(ux): Eliminate Dead Affordances On Ledger Export And Backup Actions (Refs #7)` — Wired `handleExport` and `handleBackup` to native `Alert.alert` dialogs.
+
 
 
 
