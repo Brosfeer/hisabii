@@ -1,2 +1,22 @@
 @import "tailwindcss";
 @import "uniwind";
+
+@theme {
+  /* Default application sans font */
+  --font-sans: 'ThmanyahSans-Regular';
+
+  /* 1. Digital UI Family (خط ثمانية الرقمي - Buttons, Cards, Inputs, Tabs) */
+  --font-digital: 'ThmanyahSans-Regular';
+  --font-digital-medium: 'ThmanyahSans-Medium';
+  --font-digital-bold: 'ThmanyahSans-Bold';
+
+  /* 2. Text Content Family (خط ثمانية للنصوص - Notes, Ledger Details, Descriptions) */
+  --font-text: 'ThmanyahSerifText-Regular';
+  --font-text-medium: 'ThmanyahSerifText-Medium';
+  --font-text-bold: 'ThmanyahSerifText-Bold';
+
+  /* 3. Display Title Family (خط ثمانية للعناوين - Headers, Banners, Big KPIs) */
+  --font-display: 'ThmanyahSerifDisplay-Regular';
+  --font-display-bold: 'ThmanyahSerifDisplay-Bold';
+  --font-display-black: 'ThmanyahSerifDisplay-Black';
+}
