@@ -37,6 +37,22 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/thmanyahsans-Regular.otf",
+            "./assets/fonts/thmanyahsans-Medium.otf",
+            "./assets/fonts/thmanyahsans-Bold.otf",
+            "./assets/fonts/thmanyahseriftext-Regular.otf",
+            "./assets/fonts/thmanyahseriftext-Medium.otf",
+            "./assets/fonts/thmanyahseriftext-Bold.otf",
+            "./assets/fonts/thmanyahserifdisplay-Regular.otf",
+            "./assets/fonts/thmanyahserifdisplay-Bold.otf",
+            "./assets/fonts/thmanyahserifdisplay-Black.otf"
+          ]
+        }
       ]
     ],
     "experiments": {
